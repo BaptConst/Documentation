@@ -22,6 +22,7 @@ Hx711 capteur4(13, A3);
 
 #define NB_MESURES 30 //nombre de mesures de poids pour réaliser la moyenne 
 
+//=================================================INIT CAPTEUR FORCE 1================================================================= 
 float capteur1_valeur=0; //valeur du capteur 1
 float capteur1_offset=0; //valeur à vide du capteur1
 float capteur1_fact=0; //facteur d'echelle du capteur1
@@ -29,6 +30,7 @@ float capteur1_tare_connue=(1.43+20)/4; //poids de la tare du capteur 1 (newton)
 float capteur1_x=-60; //position du capteur 1 en mm ATTENTION si c'est la pièce qui se déplace pas le palpeur la position du capteur est inversé
 float capteur1_y=-87.5; //position du capteur 1 en mm
 
+//=================================================INIT CAPTEUR FORCE 2================================================================= 
 float capteur2_valeur=0; //valeur du capteur 2
 float capteur2_offset=0; //valeur à vide du capteur2
 float capteur2_fact=0; //facteur d'echelle du capteur2
@@ -36,6 +38,7 @@ float capteur2_tare_connue=(1.43+20)/4; //poids de la tare du capteur 2 (newton)
 float capteur2_x=60; //position du capteur 2 en mm ATTENTION si c'est la pièce qui se déplace pas le palpeur la position du capteur est inversé
 float capteur2_y=-87.5; //position du capteur 2 en mm
 
+//=================================================INIT CAPTEUR FORCE 3================================================================= 
 float capteur3_valeur=0; //valeur du capteur 3
 float capteur3_offset=0; //valeur à vide du capteur3
 float capteur3_fact=0; //facteur d'echelle du capteur3
@@ -43,6 +46,7 @@ float capteur3_tare_connue=(1.43+20)/4; //poids de la tare du capteur 3 (newton)
 float capteur3_x=60; //position du capteur 3 en mm ATTENTION si c'est la pièce qui se déplace pas le palpeur la position du capteur est inversé
 float capteur3_y=87.5; //position du capteur 3 en mm
 
+//=================================================INIT CAPTEUR FORCE 4================================================================= 
 float capteur4_valeur=0; //valeur du capteur 4
 float capteur4_offset=0; //valeur à vide du capteur4
 float capteur4_fact=0; //facteur d'echelle du capteur4
@@ -114,9 +118,10 @@ void setup()
   xaxis.setAcceleration(X_ACCELERATION_MAX);
   yaxis.setAcceleration(Y_ACCELERATION_MAX);
   zaxis.setAcceleration(Z_ACCELERATION_MAX);
+ //module HC-01 Bluetooth, communique avec lapplication Android
   pinMode(PIN_SENS_MOTEUR2, OUTPUT); // sortie digitale contrôle de direction du moteur 2 de l'axe X (le nombre de pas est dupliqué du moteur 1 sur la carte)
   digitalWrite(PIN_SENS_MOTEUR2,0);
-   pinMode(PIN_ENABLE, OUTPUT); // sortie digitale contrôle de direction du moteur 2 de l'axe X (le nombre de pas est dupliqué du moteur 1 sur la carte)
+  pinMode(PIN_ENABLE, OUTPUT); // sortie digitale contrôle de direction du moteur 2 de l'axe X (le nombre de pas est dupliqué du moteur 1 sur la carte)
   digitalWrite(PIN_ENABLE,0);
   x_facteur=float(X_COURROIE_PAS)*float(X_POULIE_Z)/float(X_MOTEUR_PAS); //facteur de conversion mm/pas
   y_facteur=float(Y_COURROIE_PAS)*float(Y_POULIE_Z)/float(Y_MOTEUR_PAS); //facteur de conversion mm/pas
